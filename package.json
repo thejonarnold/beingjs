@@ -1,0 +1,28 @@
+{
+  "name": "beingjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thejonarnold/beingjs.git"
+  },
+  "keywords": [
+    "sql",
+    "tsql",
+    "orm"
+  ],
+  "author": "jonathan arnold",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thejonarnold/beingjs/issues"
+  },
+  "homepage": "https://github.com/thejonarnold/beingjs#readme",
+  "dependencies": {
+    "lodash": "^4.13.1"
+  }
+}
