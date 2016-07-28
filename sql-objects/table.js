@@ -1,34 +1,18 @@
 var TableField = require('./table-field');
 var _ = require('lodash');
 
-function Table(data){
-	this.name = data.name;
+function Table(params){
+	this.name = params.name;
 	this.fields = [];
+	this.references = [];
 
-	this.fields.push(new TableField({
-		name: 'id',
-		type: 'uniqueidentifier', 
-		nullable: false,
-		default: 'NewSequentialGuid()'
-	}));
-
-	for(var field in data.fields){
-		var x = data.fields[field];
+	for(var field in params.fields){
+		var x = params.fields[field];
 		x.name = field;
 		this.fields.push(new TableField(x));
 	}
-
-
-
-
+	
 }
 
-Table.prototype.getSql = function(){
-	var ret = `CREATE TABLE ${this.name}( \n`
-	ret += _.map(this.fields,function(f){return f.getSql();}).join(',\n');
-
-	ret += ')'
-	return ret;
-}
 
 module.exports = Table;

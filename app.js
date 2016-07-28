@@ -1,13 +1,24 @@
-var fs = require('fs');
-var Table = require('./sql-objects/table');
+function Animal(name){
+	this.name = name;
+}
 
-fs.readdir('./models',function(err,files){
-	//console.log(files);
-	files.forEach(function(file){
-		var fullPath = './models/'+file;
-		var data = require(fullPath);
-		var table = new Table(data);
-		console.log(table.getSql());
-		
-	});
-});
+Animal.prototype.speak = function(){
+	console.log('hello my name is ' + this.name);
+}
+
+
+
+Cat.prototype = new Animal();
+function Cat(name){
+	console.log('here');
+	Animal.call(this,name);
+}
+
+Cat.prototype.speak = function(){
+	console.log('meow');
+	Animal.prototype.speak.call(this);
+}
+
+var steven = new Cat("Steven");
+steven.speak();
+
