@@ -1,4 +1,4 @@
-var TableField = require('./table-field');
+var TableField = require('./table-field.js');
 var _ = require('lodash');
 
 function Table(params){

@@ -1,24 +1,18 @@
-function Animal(name){
-	this.name = name;
-}
-
-Animal.prototype.speak = function(){
-	console.log('hello my name is ' + this.name);
-}
+var glob = require("glob");
+var Database = require("./sql-objects/database.js");
+var Table = require("./sql-objects/table.js");
 
 
+var db = new Database(require("./models/database.js"))
 
-Cat.prototype = new Animal();
-function Cat(name){
-	console.log('here');
-	Animal.call(this,name);
-}
+glob("models/tables/**/*.js", null, function(err, files){
 
-Cat.prototype.speak = function(){
-	console.log('meow');
-	Animal.prototype.speak.call(this);
-}
+	files.forEach(function(f){
+		console.log(f);
+		db.tables.push(new Table(require("./"+f)))
+		
+	});
 
-var steven = new Cat("Steven");
-steven.speak();
+	console.log(JSON.stringify(db));
 
+});

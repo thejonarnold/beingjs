@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'dbo.Person',
+	name: 'Person',
 	fields:{
 		name:{
 			type:'varchar(50)',
